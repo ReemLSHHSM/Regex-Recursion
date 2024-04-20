@@ -4,10 +4,9 @@
 
 /* Write a function that take a string and return true if the string only contain uppercase and lowercase
 characters (no numbers and symbols) and it should end with capital A else return false */
-
 function capitalA(s){
     // Add your logic.
-    let script=/^[a-zA-Z]+A$/;
+    let script=/[a-zA-Z]*A$/;
     if(script.test(s)==true){
         return true;
     }
@@ -22,7 +21,8 @@ which end with io (example@example.io) */
 
 function ioEmail(email){
     // Add your logic.
-    let script=/io$/;
+    let script = /^[\w]+@[\w]+[.]+[i][o]$/i;
+
     if(script.test(email)){
         return true;
     }
@@ -41,13 +41,16 @@ required extention are jpg, jpeg and png.
 
 function imagesSearcher(text){
     let arr = [];
-    // Add your logic.
-    let script=/.jpg$|.jpeg$|.png$/;
-    if(script.test(text)){
-        arr.push(text);
+    let script = /\b[\w]+\.(jpg|jpeg|png)\b/ig; 
+    let matches = text.match(script);
+
+    if (matches) {
+        arr = matches;
     }
-    return arr
+    
+    return arr;
 }
+
 
 
 describe("Test capitalA", ()=>{
